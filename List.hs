@@ -34,22 +34,22 @@ instance Monad List where
     (>>=) ( x :> xs ) f = f x <> (xs >>= f)
 
 instance Foldable List where
-    foldr f accumulator (  List   ) = accumulator
+    foldr _ accumulator (  List   ) = accumulator
     foldr f accumulator ( x :> xs ) = f x (foldr f accumulator xs)
 
-    foldl f accumulator (  List   ) = accumulator
+    foldl _ accumulator (  List   ) = accumulator
     foldl f accumulator ( x :> xs ) = f (foldl f accumulator xs) x
 
  -- import Data.Foldable
  --
- -- foldr' f accumulator (  List   ) = accumulator
+ -- foldr' _ accumulator (  List   ) = accumulator
  -- foldr' f accumulator ( x :> xs ) =
  --     let
  --         r = foldr f accumulator xs
  --     in
  --         r `seq` f x r
 
- -- foldl' f accumulator (  List   ) = accumulator
+ -- foldl' _ accumulator (  List   ) = accumulator
  -- foldl' f accumulator ( x :> xs ) =
  --     let
  --         l = foldr f accumulator xs

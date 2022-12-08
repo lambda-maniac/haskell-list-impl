@@ -11,7 +11,7 @@ instance Semigroup (List a) where
 instance Monoid (List a) where
     mempty  = List
     mappend = (<>)
-    mconcat = foldr (<>) List -- Sould use foldr'
+    mconcat = foldr (<>) List -- Should use foldr'
 
 instance Functor List where
     fmap _ (  List   ) = List

@@ -17,7 +17,7 @@ instance Functor List where
     fmap _ (  List   ) = List
     fmap f ( x :> xs ) = f x :> fmap f xs
 
-    (<$) a (  List   ) = List
+    (<$) _ (  List   ) = List
     (<$) a ( _ :> xs ) = a :> (a <$ xs)
  -- (<$)               = fmap . const
 
@@ -71,7 +71,6 @@ instance Foldable List where
 instance Traversable List where
     traverse  lift (  List   ) = pure List
     traverse  lift ( x :> xs ) = (:>) <$> lift x <*> traverse  lift xs
-
     sequenceA      ( x :> xs ) = (:>) <$>      x <*> sequenceA      xs
  -- sequenceA                  = traverse id
 
